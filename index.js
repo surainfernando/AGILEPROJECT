@@ -11,14 +11,17 @@ const parseJson = require('parse-json');
 var userlist=[]
 
 
-var x=['a','b']
-var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');  
-var obj2=JSON.parse('{ "name":"John2", "age":302, "city":"New York2"}'); 
-obj2.name="peteryuo"
+// var x=['a','b']
+// var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');  
+// var obj2=JSON.parse('{ "name":"John2", "age":302, "city":"New York2"}'); 
+// obj2.name="peteryuo"
 
-var objarray=[]
-objarray.push(obj)
-objarray.push(obj2)
+// var objarray=[]
+// objarray.push(obj)
+// objarray.push(obj2)
+
+var user1=JSON.parse('{"firstname":"Lio","lastname":"siva","id":"200234567V","address":"AZ","email":"lio@ss.mm","password":"passLio"}')
+userlist.push(user1)
 app.get('/', (req, res) => {
 
   var x=userlist[0]
@@ -34,8 +37,15 @@ app.get('/display', (req, res) => {
   var i = 0;;
   var len = userlist.length;
 for (; i < len; ) {
+  console.log("---------------------------------------------------------------")
   var x=userlist[i]
   console.log(x.firstname)
+  console.log(x.lastname)
+  console.log(x.email)
+  console.log(x.address)
+  console.log(x.id)
+  console.log(x.password)
+
 
   i++;
 } 
@@ -45,14 +55,17 @@ res.send('Hello Display!')
 
 
 app.post('/register', (req, res) => {
-  console.log("req recieved")
-  console.log(req.body.name)
-  x.push(req.body.firstname)
+
   const firstname=req.body.firstname
   const lastname=req.body.lastname
-  var obj2=JSON.parse('{ "name":"firstname","lastname":"lastname"}'); 
+  var obj2=JSON.parse('{ "name":"firstname","lastname":"lastname","email":"email","password":"password","id":"id","address":"address"}'); 
   obj2.firstname=firstname
   obj2.lastname=lastname
+  obj2.email=req.body.email
+  obj2.address=req.body.address
+  obj2.id=req.body.id
+  obj2.password=req.body.password
+  
   userlist.push(obj2)
     res.send('Registered!')
   })
