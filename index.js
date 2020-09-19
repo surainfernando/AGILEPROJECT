@@ -7,7 +7,7 @@ const port = 3000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-const parseJson = require('parse-json');
+//const parseJson = require('parse-json');
 var userlist=[]
 
 
@@ -69,6 +69,30 @@ app.post('/register', (req, res) => {
   userlist.push(obj2)
     res.send('Registered!')
   })
+
+  app.post('/login', (req, res) => {
+    const email=req.body.email
+    console.log(email)
+    const password=req.body.password
+    console.log(password)
+    var i = 0;;
+    var len = userlist.length;
+  for (; i < len; ) {
+    var x=userlist[i]
+    if(x.email===email)
+    { x.status="success"
+      if(x.password===password)
+      { res.send(x)}
+      else{res.send({"status":"fail","reason":"passwordwrong"})}
+      
+    }
+    console.log("fno email")
+    i++
+  }
+
+    
+      res.send({"status":"fail","reason":"emailwrong"})
+    })
   
   
 app.listen(port, () => {
