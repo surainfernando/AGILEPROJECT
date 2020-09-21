@@ -62,6 +62,9 @@ app.post('/register', (req, res) => {
   userlist.push(obj2)
     res.send('Registered!')
   })
+  //Postman code http://localhost:3000/register
+  //postman body || raw|| json
+  //{"firstname":"john","lastname":"Ham","id":"900234888V","address":"AZ","email":"johns@ss.mm","password":"passjjohn"}
 
   app.post('/login', (req, res) => {
     const email=req.body.email
@@ -86,6 +89,9 @@ app.post('/register', (req, res) => {
     
       res.send({"status":"fail","reason":"emailwrong"})
     })
+    //Postman code http://localhost:3000/login
+  //postman body || raw|| json
+ // {"email":"lio@ss.mm","password":"passLio"}
   
   
 app.listen(port, () => {
