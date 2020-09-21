@@ -8,20 +8,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 //const parseJson = require('parse-json');
-var userlist=[]
+var userlist=[]// list of registerd usrs
 
 
-// var x=['a','b']
-// var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');  
-// var obj2=JSON.parse('{ "name":"John2", "age":302, "city":"New York2"}'); 
-// obj2.name="peteryuo"
 
-// var objarray=[]
-// objarray.push(obj)
-// objarray.push(obj2)
 
-var user1=JSON.parse('{"firstname":"Lio","lastname":"siva","id":"200234567V","address":"AZ","email":"lio@ss.mm","password":"passLio"}')
-userlist.push(user1)
+var user1=JSON.parse('{"firstname":"Lio","lastname":"siva","id":"200234567V","address":"AZ","email":"lio@ss.mm","password":"passLio"}')//hardcode registerd user
+userlist.push(user1) //hardcode registerd user
 app.get('/', (req, res) => {
 
   var x=userlist[0]
@@ -32,7 +25,7 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/display', (req, res) => {
+app.get('/display', (req, res) => { // when http://localhost:3000/display enterd in browser browser display list of registerd users 
   console.log("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
   var i = 0;;
   var len = userlist.length;
@@ -49,7 +42,7 @@ for (; i < len; ) {
 
   i++;
 } 
-res.send('Hello Display!')
+res.send(userlist)
 
 })
 
@@ -58,7 +51,7 @@ app.post('/register', (req, res) => {
 
   const firstname=req.body.firstname
   const lastname=req.body.lastname
-  var obj2=JSON.parse('{ "name":"firstname","lastname":"lastname","email":"email","password":"password","id":"id","address":"address"}'); 
+  var obj2=JSON.parse('{ "lastname":"lastname","email":"email","password":"password","id":"id","address":"address"}'); 
   obj2.firstname=firstname
   obj2.lastname=lastname
   obj2.email=req.body.email
@@ -98,3 +91,16 @@ app.post('/register', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+
+
+
+//useless
+// var x=['a','b']
+// var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');  
+// var obj2=JSON.parse('{ "name":"John2", "age":302, "city":"New York2"}'); 
+// obj2.name="peteryuo"
+
+// var objarray=[]
+// objarray.push(obj)
+// objarray.push(obj2)
