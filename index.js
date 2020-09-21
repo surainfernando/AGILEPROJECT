@@ -11,6 +11,7 @@ app.use(cors());
 var userlist=[]// list of registerd usrs
 
 
+//test
 
 
 var user1=JSON.parse('{"firstname":"Lio","lastname":"siva","id":"200234567V","address":"AZ","email":"lio@ss.mm","password":"passLio"}')//hardcode registerd user
